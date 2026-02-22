@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agência de Automação de IA - Do Zero a R$100K/mês</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1a202c;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .highlight {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1a202c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ROI Calculator */
+        .roi-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .roi-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1a202c;
+        }
+
+        .roi-calculator {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .roi-calculator {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .roi-input {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .roi-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .roi-input-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        .roi-input-group input {
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .roi-result {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .roi-result h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .roi-result .amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .roi-result .description {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #1a202c;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Agência de Automação de IA</h1>
+            <p class="subtitle">Do Zero a <span class="highlight">R$100K/mês</span></p>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                Modelo de negócio 100% digital, validado em 2026, com <span class="highlight">95% de margem de lucro</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Form Section -->
+        <section class="form-section">
+            <h2>📋 Capture Seu Primeiro Lead</h2>
+            <form id="leadForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nome Completo *</label>
+                        <input type="text" id="name" name="name" required placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Telefone/WhatsApp *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" name="company" placeholder="Sua empresa">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensagem (opcional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Conte mais sobre seu negócio..."></textarea>
+                </div>
+
+                <button type="submit" class="btn">
+                    <span id="btnText">Enviar Dados</span>
+                    <span id="btnLoader" class="loading" style="display: none; margin-left: 10px;"></span>
+                </button>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Dados enviados com sucesso! Entraremos em contato em breve.
+                </div>
+            </form>
+        </section>
+
+        <!-- ROI Calculator -->
+        <section class="roi-section">
+            <h2>💰 Calculadora de ROI</h2>
+            <div class="roi-calculator">
+                <div class="roi-input">
+                    <div class="roi-input-group">
+                        <label for="hoursPerDay">Quantas horas/dia você perde com triagem de leads?</label>
+                        <input type="number" id="hoursPerDay" min="1" max="8" value="4" placeholder="Ex: 4">
+                    </div>
+                    <div class="roi-input-group">
+                        <label for="leadsPerMonth">Quantos leads você recebe por mês?</label>
+                        <input type="number" id="leadsPerMonth" min="10" max="1000" value="100" placeholder="Ex: 100">
+                    </div>
+                    <div class="roi-input-group">
+                        <label for="hourlyRate">Seu valor/hora (R$)</label>
+                        <input type="number" id="hourlyRate" min="50" max="1000" value="150" placeholder="Ex: 150">
+                    </div>
+                </div>
+
+                <div class="roi-result">
+                    <h3>Economia Mensal com Automação</h3>
+                    <div class="amount" id="roiAmount">R$ 12.000</div>
+                    <div class="description">
+                        <p id="roiDescription">Você economizaria R$ 12.000/mês automatizando a triagem de leads</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section>
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">Por que funciona agora</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Investimento Baixo</h3>
+                    <p>R$ 300-500/mês em infraestrutura. Lucro imediato desde o primeiro cliente.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Margem Alta</h3>
+                    <p>95% de margem bruta. Cada cliente = R$ 1.500-3.000/mês de receita recorrente.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Escalável</h3>
+                    <p>50 clientes = R$ 100.000/mês. Totalmente automatizado e sem limite de crescimento.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Agência de Automação de IA © 2026 | Modelo de Negócio Data-Driven</p>
+    </footer>
+
+    <script>
+        // Google Apps Script URL - SUBSTITUA PELA SUA URL DE DEPLOYMENT
+        const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/userwithscript";
+
+        // Form Handler
+        document.getElementById("leadForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const btnText = document.getElementById("btnText");
+            const btnLoader = document.getElementById("btnLoader");
+            const successMessage = document.getElementById("successMessage");
+            const btn = form.querySelector("button");
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                company: document.getElementById("company").value || "Não informado",
+                message: document.getElementById("message").value || "Sem mensagem",
+                roiEstimado: document.getElementById("roiAmount").textContent
+            };
+
+            // Show loading state
+            btn.disabled = true;
+            btnText.style.display = "none";
+            btnLoader.style.display = "inline-block";
+
+            try {
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: "POST",
+                    body: JSON.stringify(formData),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Show success message
+                    successMessage.classList.add("show");
+                    form.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove("show");
+                    }, 5000);
+                } else {
+                    alert("Erro ao enviar dados: " + result.error);
+                }
+            } catch (error) {
+                console.error("Erro:", error);
+                alert("Erro ao conectar com o servidor. Verifique se a URL do Google Apps Script está correta.");
+            } finally {
+                // Reset button state
+                btn.disabled = false;
+                btnText.style.display = "inline";
+                btnLoader.style.display = "none";
+            }
+        });
+
+        // ROI Calculator
+        function calculateROI() {
+            const hoursPerDay = parseFloat(document.getElementById("hoursPerDay").value) || 4;
+            const leadsPerMonth = parseFloat(document.getElementById("leadsPerMonth").value) || 100;
+            const hourlyRate = parseFloat(document.getElementById("hourlyRate").value) || 150;
+
+            // Assumindo 20 dias úteis por mês
+            const hoursPerMonth = hoursPerDay * 20;
+            const economyPerMonth = hoursPerMonth * hourlyRate;
+
+            document.getElementById("roiAmount").textContent = `R$ ${economyPerMonth.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`;
+            document.getElementById("roiDescription").textContent = 
+                `Você economizaria R$ ${economyPerMonth.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}/mês automatizando ${leadsPerMonth} leads`;
+        }
+
+        // Add event listeners to ROI inputs
+        document.getElementById("hoursPerDay").addEventListener("input", calculateROI);
+        document.getElementById("leadsPerMonth").addEventListener("input", calculateROI);
+        document.getElementById("hourlyRate").addEventListener("input", calculateROI);
+
+        // Initial ROI calculation
+        calculateROI();
+    </script>
+</body>
+</html>
