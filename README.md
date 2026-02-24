@@ -3,7 +3,7 @@
 > **Um modelo de negócio 100% digital, data-driven e pronto para escala. Capture leads automaticamente, analise ROI em tempo real e transforme visitantes em clientes.**
 
 [![GitHub](https://img.shields.io/badge/GitHub-JVitorDkx-blue?logo=github)](https://github.com/JVitorDkx/meu-saas-automatizado)
-[![Status](https://img.shields.io/badge/Status-Inativo-lightgrey)]()
+[![Status](https://img.shields.io/badge/Status-Inativo-red)]()
 [![Licença](https://img.shields.io/badge/Licença-MIT-green)]()
 
 ---
