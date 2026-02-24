@@ -24,6 +24,8 @@
 
 ## 🎯 Visão Geral
 
+> **Nota**: Este projeto encontra-se em modo de demonstração/manutenção. Algumas funcionalidades estão em desenvolvimento.
+
 A **Agência de Automação de IA (AAA)** é um SaaS moderno que automatiza a captura de leads e fornece análise de ROI em tempo real. Construído com tecnologias modernas e hospedado gratuitamente no GitHub Pages, este projeto demonstra como criar um negócio digital escalável com margem de lucro de 94,5%.
 
 ### O Problema
