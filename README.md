@@ -325,9 +325,8 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 👨‍💻 Autor
 
-**JVitor Souza**
+**JVitor**
 - GitHub: [@JVitorDkx](https://github.com/JVitorDkx)
-- Email: jvitordkx@gmail.com
 
 ---
 
